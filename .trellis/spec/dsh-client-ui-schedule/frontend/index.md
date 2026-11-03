@@ -1,39 +1,14 @@
-# Frontend Development Guidelines
+# @deepseek-ai/dsh-client-ui-schedule 开发入口
 
-> Best practices for frontend development in this project.
+修改目录：`packages/client/ui-schedule`。本页用于定位该包与适用规则；具体公开行为以包文档和源码为准。
 
----
+## 开发前阅读项（Pre-Development Checklist）
 
-## Overview
+- 阅读[共享指南](../../guides/index.md)和专题：[harness](../../guides/harness/index.md)、[client](../../guides/client/index.md)。
+- 阅读[包文档](../../../../packages/client/ui-schedule/README.md)、[manifest](../../../../packages/client/ui-schedule/package.json)和[源码/入口](../../../../packages/client/ui-schedule/src/client/index.ts)，确认相关类型、配置、导出与消费者。
+- 测试位置：[packages/client/ui-schedule/tests](../../../../packages/client/ui-schedule/tests)。
 
-This directory contains guidelines for frontend development. Fill in each file with your project's specific conventions.
+## 质量检查项（Quality Check）
 
----
-
-## Guidelines Index
-
-| Guide | Description | Status |
-|-------|-------------|--------|
-| [Directory Structure](./directory-structure.md) | Module organization and file layout | To fill |
-| [Component Guidelines](./component-guidelines.md) | Component patterns, props, composition | To fill |
-| [Hook Guidelines](./hook-guidelines.md) | Custom hooks, data fetching patterns | To fill |
-| [State Management](./state-management.md) | Local state, global state, server state | To fill |
-| [Quality Guidelines](./quality-guidelines.md) | Code standards, forbidden patterns | To fill |
-| [Type Safety](./type-safety.md) | Type patterns, validation | To fill |
-
----
-
-## How to Fill These Guidelines
-
-For each guideline file:
-
-1. Document your project's **actual conventions** (not ideals)
-2. Include **code examples** from your codebase
-3. List **forbidden patterns** and why
-4. Add **common mistakes** your team has made
-
-The goal is to help AI assistants and new team members understand how YOUR project works.
-
----
-
-**Language**: All documentation should be written in **English**.
+- 按[验证选择](../../guides/quality.md)核对本次行为、生命周期与公开入口，执行受影响路径的检查。
+- 同步该包实际变化的类型、消费者与文档；只报告已经取得的验证证据。

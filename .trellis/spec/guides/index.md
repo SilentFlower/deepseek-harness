@@ -1,97 +1,43 @@
-# Thinking Guides
+# 共享开发指南
 
-> **Purpose**: Expand your thinking to catch things you might not have considered.
+每次开发先按本页确定阅读范围。仓库总规则见 [AGENTS.md](../../../AGENTS.md)，具体目录可能另有 `AGENTS.md`；源类型和现行文档优先于相似代码中的历史写法。
 
----
+## 开发前阅读项（Pre-Development Checklist）
 
-## Why Thinking Guides?
+1. 读取任务需求与受影响目录的指令，按[范围表](../index.md)选读专题。
+2. 修改 `packages/` 前读[架构](../../../docs/architecture.md)与[防御规则索引](../../../docs/defensive-patterns/README.md)对应页面；修改客户端还读客户端规范。
+3. 读取相关类、事件、请求、返回值和直接消费者；用 `rg` 查找现有实现及配置使用者，再确定改动位置。
+4. 需要新抽象或共享逻辑时读[复用指南](code-reuse-thinking-guide.md)；改动事件、RPC、持久化或多层数据流时读[跨层指南](cross-layer-thinking-guide.md)。
+5. 按[质量与验证](quality.md)选择能够验证实际行为的检查。
 
-**Most bugs and tech debt come from "didn't think of that"**, not from lack of skill:
+## 专题
 
-- Didn't think about what happens at layer boundaries → cross-layer bugs
-- Didn't think about code patterns repeating → duplicated code everywhere
-- Didn't think about edge cases → runtime errors
-- Didn't think about future maintainers → unreadable code
+| 专题 | 解决的问题 |
+| --- | --- |
+| [复用与职责](code-reuse-thinking-guide.md) | 如何选择现有实现、注册扩展点和共享代码位置 |
+| [跨层变更](cross-layer-thinking-guide.md) | 如何追踪类型、日志、投影、RPC 和 SDK 消费者 |
+| [质量与验证](quality.md) | 如何选择源码、构建产物、快照和文档的验证入口 |
 
-These guides help you **ask the right questions before coding**.
+## 按职责选读
 
----
+实际工作区保留独立入口，共同约定集中在以下专题。跨层包按本次修改的实现选择多个专题。
 
-## Available Guides
+| 专题 | 目录与实现 |
+| --- | --- |
+| [Harness](harness/index.md) | 服务、工具、API、Session、存储和共享库 |
+| [客户端](client/index.md) | 浏览器插件、组件、对象层和状态 |
+| [应用](apps/index.md) | CLI、Desktop、Host、profile 与 Web 构建 |
+| [实验能力](experimental/index.md) | opt-in 组合、依赖隔离和转正 |
+| [Python](python/index.md) | SDK 与运行时分发 |
+| [原生能力](native/index.md) | addon、launcher 与平台载荷 |
+| [第三方源码](vendor/index.md) | 固定来源及同步流程 |
+| [脚本](tooling/index.md) | 检查、生成器与构建聚合 |
+| [性能](benchmarks/index.md) | 合成负载、预算和报告 |
+| [网站](website/index.md) | VitePress 投影与主题 |
+| [文档](docs/index.md) | 归属、文风、双语与验证 |
 
-| Guide | Purpose | When to Use |
-|-------|---------|-------------|
-| [Code Reuse Thinking Guide](./code-reuse-thinking-guide.md) | Identify patterns and reduce duplication | When you notice repeated patterns |
-| [Cross-Layer Thinking Guide](./cross-layer-thinking-guide.md) | Think through data flow across layers | Features spanning multiple layers |
+## 质量检查项（Quality Check）
 
----
-
-## Quick Reference: Thinking Triggers
-
-### When to Think About Cross-Layer Issues
-
-- [ ] Feature touches 3+ layers (API, Service, Component, Database)
-- [ ] Data format changes between layers
-- [ ] Multiple consumers need the same data
-- [ ] You're not sure where to put some logic
-- [ ] You are adding an event kind, JSONL record, RPC payload, or config field
-- [ ] UI / command code starts casting raw payload fields directly
-
-→ Read [Cross-Layer Thinking Guide](./cross-layer-thinking-guide.md)
-
-### When to Think About Code Reuse
-
-- [ ] You're writing similar code to something that exists
-- [ ] You see the same pattern repeated 3+ times
-- [ ] You're adding a new field to multiple places
-- [ ] **You're modifying any constant or config**
-- [ ] **You're creating a new utility/helper function** ← Search first!
-- [ ] Two files read the same untyped payload field with local casts
-- [ ] Multiple branches update the same derived state from `kind` / `action`
-
-→ Read [Code Reuse Thinking Guide](./code-reuse-thinking-guide.md)
-
-### When Verifying AI Cross-Review Results
-
-- [ ] Reviewer claims "user input can be malicious" → Check the actual data source (internal manifest? user config? external API?)
-- [ ] Reviewer flags "missing validation" → Is the data from a trusted internal source?
-- [ ] Reviewer says "behavior change" → Read the code comments — is it intentional design?
-- [ ] Reviewer identifies a "bug" in test → Mentally delete the feature being tested — does the test still pass? If yes → tautological test
-
-**Common AI reviewer false-positive patterns**:
-1. **Trust boundary confusion**: Treating internal data (bundled JSON manifests) as untrusted external input
-2. **Ignoring design comments**: Flagging intentional behavior documented in code comments as bugs
-3. **Variable misreading**: Not tracing a variable to its actual definition (e.g., Map keyed by path vs name)
-
-**Verification rule**: Every CRITICAL/WARNING finding must be verified against the actual code before prioritizing. Budget ~35% false-positive rate for AI reviews.
-
----
-
-## Pre-Modification Rule (CRITICAL)
-
-> **Before changing ANY value, ALWAYS search first!**
-
-```bash
-# Search for the value you're about to change
-grep -r "value_to_change" .
-```
-
-This single habit prevents most "forgot to update X" bugs.
-
----
-
-## How to Use This Directory
-
-1. **Before coding**: Skim the relevant thinking guide
-2. **During coding**: If something feels repetitive or complex, check the guides
-3. **After bugs**: Add new insights to the relevant guide (learn from mistakes)
-
----
-
-## Contributing
-
-Found a new "didn't think of that" moment? Add it to the relevant guide.
-
----
-
-**Core Principle**: 30 minutes of thinking saves 3 hours of debugging.
+- 规则和示例指向当前文件，未从其他项目引入目录、命令或框架假设。
+- 非显然的公开行为由 JSDoc 与归属 README 说明；文档编辑适用[文风标准](../../../.agents/skills/dsh-prose-standard/SKILL.md)。
+- 报告仅列实际执行的检查及结果；未执行、跳过和失败分别说明。

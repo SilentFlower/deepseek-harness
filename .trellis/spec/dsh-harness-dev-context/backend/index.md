@@ -1,38 +1,14 @@
-# Backend Development Guidelines
+# @deepseek-ai/dsh-harness-dev-context 开发入口
 
-> Best practices for backend development in this project.
+修改目录：`packages/context/harness-dev-context`。本页用于定位该包与适用规则；具体公开行为以包文档和源码为准。
 
----
+## 开发前阅读项（Pre-Development Checklist）
 
-## Overview
+- 阅读[共享指南](../../guides/index.md)和专题：[harness](../../guides/harness/index.md)。
+- 阅读[包文档](../../../../packages/context/harness-dev-context/README.md)、[manifest](../../../../packages/context/harness-dev-context/package.json)和[源码/入口](../../../../packages/context/harness-dev-context/src/index.ts)，确认相关类型、配置、导出与消费者。
+- 测试位置：[packages/context/harness-dev-context/tests](../../../../packages/context/harness-dev-context/tests)。
 
-This directory contains guidelines for backend development. Fill in each file with your project's specific conventions.
+## 质量检查项（Quality Check）
 
----
-
-## Guidelines Index
-
-| Guide | Description | Status |
-|-------|-------------|--------|
-| [Directory Structure](./directory-structure.md) | Module organization and file layout | To fill |
-| [Database Guidelines](./database-guidelines.md) | ORM patterns, queries, migrations | To fill |
-| [Error Handling](./error-handling.md) | Error types, handling strategies | To fill |
-| [Quality Guidelines](./quality-guidelines.md) | Code standards, forbidden patterns | To fill |
-| [Logging Guidelines](./logging-guidelines.md) | Structured logging, log levels | To fill |
-
----
-
-## How to Fill These Guidelines
-
-For each guideline file:
-
-1. Document your project's **actual conventions** (not ideals)
-2. Include **code examples** from your codebase
-3. List **forbidden patterns** and why
-4. Add **common mistakes** your team has made
-
-The goal is to help AI assistants and new team members understand how YOUR project works.
-
----
-
-**Language**: All documentation should be written in **English**.
+- 按[验证选择](../../guides/quality.md)核对本次行为、生命周期与公开入口，执行受影响路径的检查。
+- 同步该包实际变化的类型、消费者与文档；只报告已经取得的验证证据。

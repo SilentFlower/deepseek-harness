@@ -949,7 +949,7 @@ packages:
     path: website
   dsh-python-runtime-closure:
     path: python/sdk-runtime
-default_package: @deepseek-ai/cordis
+default_package: cordis
 
 codex:
   dispatch_mode: auto

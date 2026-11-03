@@ -1,0 +1,28 @@
+# Project-scoped Codex defaults for Trellis workflows.
+# Codex merges this layer after the user-level config when the project
+# is marked as a trusted project. To trust this project, add it under
+# `[projects]` in ~/.codex/config.toml, e.g.:
+#
+#   [projects."/abs/path/to/this/repo"]
+#   trust_level = "trusted"
+
+# Keep AGENTS.md as the primary project instruction file.
+project_doc_fallback_filenames = ["AGENTS.md"]
+
+# Codex hooks require features.hooks and any review required by the installed
+# Codex version. Current Codex also reads supported feature flags from trusted
+# project config; older clients may require user-level settings.
+
+# Keep multi-agent version settings user-owned. Codex selects the effective
+# runtime from explicit settings, model metadata, and existing session state.
+# A false multi_agent_v2 flag does not guarantee V1; inspect the active session.
+# Use configuration syntax supported by the installed Codex version.
+
+# Limit recursive subagent spawning for the V1 runtime.
+# Codex MultiAgentV2 ignores agents.max_depth; this setting does not impose
+# a nesting limit on V2 agents. Verify the active runtime before relying on it.
+# This project-level setting takes precedence over the user-level value.
+[agents]
+max_depth = 1
+[features]
+default_mode_request_user_input = true

@@ -16,3 +16,21 @@ docs/persistence-changes/historical-formats/*.schema.json linguist-generated=tru
 
 # Unified patch blank context lines require their leading space.
 patches/*.patch whitespace=-blank-at-eol
+
+# Trellis: append-only developer journals should merge cleanly across
+# parallel sessions/worktrees — each session only appends a new block, so
+# there is nothing to actually conflict on.
+#
+# Do NOT add a rule for workspace/*/index.md here — it is fully regenerated
+# every session, so a real conflict there is expected and safe to resolve by
+# picking either side (task state lives in task.json, not index.md). See
+# .trellis/spec/cli/backend/directory-structure.md for details.
+.trellis/workspace/*/journal-*.md merge=union
+
+# Flower 快照保留包内原始字节，避免与安装记录中的摘要不一致。
+.agents/skills/trellis-channel/references/command-reference.md whitespace=-blank-at-eof
+.claude/skills/trellis-channel/references/command-reference.md whitespace=-blank-at-eof
+.agents/skills/trellis-meta/references/local-architecture/workspace-memory.md whitespace=-blank-at-eol
+.claude/skills/trellis-meta/references/local-architecture/workspace-memory.md whitespace=-blank-at-eol
+.agents/skills/trellis-visualize/templates/template.html whitespace=-blank-at-eol
+.claude/skills/trellis-visualize/templates/template.html whitespace=-blank-at-eol

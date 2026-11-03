@@ -5,8 +5,14 @@
 ## 开发前阅读项（Pre-Development Checklist）
 
 - 阅读[共享指南](../../guides/index.md)和专题：[apps](../../guides/apps/index.md)、[client](../../guides/client/index.md)。
-- 阅读[包文档](../../../../apps/desktop/README.md)、[manifest](../../../../apps/desktop/package.json)和[源码/入口](../../../../apps/desktop/src/main.ts)，确认相关类型、配置、导出与消费者。
+- 阅读[包文档](../../../../apps/desktop/README.md)、[manifest](../../../../apps/desktop/package.json)和[Welcome 入口](../../../../apps/desktop/src/client/welcome.tsx)，确认相关类型、配置、导出与消费者；Electron 编排另读 [main](../../../../apps/desktop/src/main.ts)。
 - 测试位置：[apps/desktop/tests](../../../../apps/desktop/tests)。
+
+## 专属规范
+
+- [Welcome 与壳页面](welcome-and-shell.md)：独立 React 页面、preload、账户状态和窗口卸载。
+- [Desktop 二开入口](../backend/architecture-and-development.md)：选择工作区插件、Electron 与 Host 的修改位置。
+- [IPC 与认证](../backend/ipc-and-authentication.md)及[更新与设置](../backend/updates-and-settings.md)：原生操作的权限与结果。
 
 ## 质量检查项（Quality Check）
 

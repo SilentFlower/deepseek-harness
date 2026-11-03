@@ -6,6 +6,10 @@
 
 先读[共享指南](../index.md)和应用自己的 README。修改组合时读[profile 与启动](profiles.md)，修改 Web 入口时读[Web 构建](web-build.md)及[客户端规范](../client/index.md)。应用涉及底层服务时还要读取[Harness 规范](../harness/index.md)。
 
+## Desktop 二开
+
+先从 [Desktop 专属规范](../../dsh-desktop/backend/index.md)选择 Electron、Host 或共享客户端的实现位置；独立本地页面读 [Welcome 规范](../../dsh-desktop/frontend/welcome-and-shell.md)，Node-mode 后端读 [Host 生命周期](../../dsh-desktop-host/backend/startup-and-shutdown.md)。打包、签名和安装后的验证按 Desktop 的专题执行。
+
 ## 质量检查项（Quality Check）
 
 - Node 应用由 `dsh` profile 启动，组合配置与 resolver manifest 的依赖匹配。

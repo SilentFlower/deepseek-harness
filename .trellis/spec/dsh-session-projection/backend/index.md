@@ -8,6 +8,13 @@
 - 阅读[包文档](../../../../packages/session/session-projection/README.md)、[manifest](../../../../packages/session/session-projection/package.json)和[源码/入口](../../../../packages/session/session-projection/src/index.ts)，确认相关类型、配置、导出与消费者。
 - 测试位置：[packages/session/session-projection/tests](../../../../packages/session/session-projection/tests)。
 
+## 专属规范
+
+| 专题 | 修改时重点 |
+| --- | --- |
+| [状态、视图与恢复](state-and-replay.md) | 纯 fold、引用、摘要、stateVersion 和 checkpoint |
+| [注册、读取与卸载](registration-and-readers.md) | 注册就绪、Session 准备、私有 handle 和同步 reader |
+
 ## 质量检查项（Quality Check）
 
 - 按[验证选择](../../guides/quality.md)核对本次行为、生命周期与公开入口，执行受影响路径的检查。

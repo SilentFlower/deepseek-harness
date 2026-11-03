@@ -8,6 +8,13 @@
 - 阅读[包文档](../../../../packages/client/ui-slots/README.md)、[manifest](../../../../packages/client/ui-slots/package.json)和[源码/入口](../../../../packages/client/ui-slots/src/index.ts)，确认相关类型、配置、导出与消费者。
 - 测试位置：[packages/client/ui-slots/tests](../../../../packages/client/ui-slots/tests)。
 
+## 专属规范
+
+| 专题 | 修改时重点 |
+| --- | --- |
+| [声明、路由与 Factory](declarations-and-factories.md) | children 授权、四种 kind、声明周期与复用位置 |
+| [Props 与 Store](props-and-stores.md) | 派生类型、数据通道、inject、scope 和 occurrence |
+
 ## 质量检查项（Quality Check）
 
 - 按[验证选择](../../guides/quality.md)核对本次行为、生命周期与公开入口，执行受影响路径的检查。

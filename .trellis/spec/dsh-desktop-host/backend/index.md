@@ -8,6 +8,11 @@
 - 阅读[包文档](../../../../apps/desktop/README.md)、[manifest](../../../../apps/desktop-host/package.json)和[源码/入口](../../../../apps/desktop-host/src/index.ts)，确认相关类型、配置、导出与消费者。
 - 测试位置：[apps/desktop-host/tests](../../../../apps/desktop-host/tests)。
 
+## 专属规范
+
+- [启动、控制与关闭](startup-and-shutdown.md)：共享 profile、ready、任务检查、请求排空及关闭确认。
+- [Desktop 二开入口](../../dsh-desktop/backend/architecture-and-development.md)：上层 Electron、Host 与共享客户端的职责。
+
 ## 质量检查项（Quality Check）
 
 - 按[验证选择](../../guides/quality.md)核对本次行为、生命周期与公开入口，执行受影响路径的检查。

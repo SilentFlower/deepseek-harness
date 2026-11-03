@@ -23,6 +23,20 @@
 
 跨包任务读取所有受影响包的入口。API、实验包中的浏览器实现同样遵循客户端规则。没有独立 npm 包的脚本、Python SDK 和文档从共享专题进入。包的公开能力、配置和限制始终先读其 README 与源类型，目录地图见 [packages/README.md](../../packages/README.md)。
 
+## 核心模块专题
+
+以下模块在包入口下提供独立专题，按实际修改路径选读；其余工作区继续通过各自索引与共享指南定位。
+
+| 模块 | 专属规范入口 |
+| --- | --- |
+| Agent 循环 | [生命周期、请求与失败恢复](dsh-agent-loop/backend/index.md) |
+| Session | [事件历史、Fork 与耐久性](dsh-session/backend/index.md) |
+| Tools | [注册准入、策略与结果](dsh-tools/backend/index.md) |
+| Session 投影 | [状态回放、注册与同步读取](dsh-session-projection/backend/index.md) |
+| UI slots | [声明、Factory、Props 与 Store](dsh-client-ui-slots/frontend/index.md) |
+| UI renderer | [挂载、绑定、实例与错误监督](dsh-client-ui-renderer/frontend/index.md) |
+| Desktop | [二开入口、原生桥、窗口、更新与打包](dsh-desktop/backend/index.md)，含 [Welcome](dsh-desktop/frontend/index.md)与[私有 Host](dsh-desktop-host/backend/index.md) |
+
 ## 维护
 
 增加规范时同步直接父索引；增加工作区时同步包配置和对应入口。只有源码、测试或现行规则能够支持的约定才进入规范。项目规则的详细定义保留在原归属文档，规范链接到它；任务计划与检查结果留在任务目录。

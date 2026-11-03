@@ -8,6 +8,13 @@
 - 阅读[包文档](../../../../packages/client/ui-renderer/README.md)、[manifest](../../../../packages/client/ui-renderer/package.json)和[源码/入口](../../../../packages/client/ui-renderer/src/client/index.ts)，确认相关类型、配置、导出与消费者。
 - 测试位置：[packages/client/ui-renderer/tests](../../../../packages/client/ui-renderer/tests)。
 
+## 专属规范
+
+| 专题 | 修改时重点 |
+| --- | --- |
+| [挂载与响应绑定](bindings-and-mount.md) | boot 交接、裸来源转 hook、scope 与重新连接 |
+| [注册与错误监督](registry-and-supervision.md) | 调用者 fiber、store 实例、过期授权和崩溃接替 |
+
 ## 质量检查项（Quality Check）
 
 - 按[验证选择](../../guides/quality.md)核对本次行为、生命周期与公开入口，执行受影响路径的检查。

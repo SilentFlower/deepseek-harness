@@ -8,6 +8,13 @@
 - 阅读[包文档](../../../../packages/core/tools/README.md)、[manifest](../../../../packages/core/tools/package.json)和[源码/入口](../../../../packages/core/tools/src/index.ts)，确认相关类型、配置、导出与消费者。
 - 测试位置：[packages/core/tools/tests](../../../../packages/core/tools/tests)。
 
+## 专属规范
+
+| 专题 | 修改时重点 |
+| --- | --- |
+| [注册、作用域与准入](registration-and-admission.md) | 条件选择、scope、限制、撤销和 executor 身份 |
+| [执行与结果](execution-and-results.md) | 策略、取消、并发屏障、规范值和模型/UI 呈现 |
+
 ## 质量检查项（Quality Check）
 
 - 按[验证选择](../../guides/quality.md)核对本次行为、生命周期与公开入口，执行受影响路径的检查。
